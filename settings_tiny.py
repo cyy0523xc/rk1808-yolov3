@@ -9,6 +9,7 @@ yolov3_model_cfg = './yolov3/yolov3-tiny-gf.cfg'
 yolov3_weights = './yolov3/yolov3-tiny-gf_final.weights'
 
 # rknn model file
+pre_compile = True
 rknn_model = './rknn_models/gf_yolov3_tiny.rknn'
 
 # 识别目标的类别

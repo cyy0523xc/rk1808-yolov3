@@ -195,7 +195,7 @@ def load_model():
     if ret != 0:
         raise Exception('Init runtime environment failed')
 
-    print('done: ', timer()-testtime)
+    print('init done: ', timer()-testtime)
     return rknn
 
 
@@ -209,8 +209,12 @@ if __name__ == '__main__':
     testtime = timer()
     result = rknn.inference(inputs=[image])
     print("rknn use time {}", timer()-testtime)
-    print("result: ", len(result))
-    out_boxes, out_boxes2 = result
+    # tiny模型时，len result == 2
+    # spp模型时，len result == 3
+    print("result len: ", len(result))
+    for one in result:
+        print(one.shape)
+    out_boxes, out_boxes2 = result[:2]
     print(out_boxes)
     print(out_boxes2)
 

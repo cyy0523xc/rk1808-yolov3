@@ -1,5 +1,5 @@
 from rknn.api import RKNN
-from settings import yolov3_weights, yolov3_model_cfg, rknn_model
+from settings import yolov3_weights, yolov3_model_cfg, rknn_model, pre_compile
 
 
 if __name__ == '__main__':
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     print('--> Building model')
     # ret = rknn.build(do_quantization=True, dataset='./dataset.txt')
     # do_quantization:是否对模型进行量化,值为 True 或 False。
-    ret = rknn.build(do_quantization=False)
+    ret = rknn.build(do_quantization=False, pre_compile=pre_compile)
     if ret != 0:
         print('Build yolov3 failed!')
         exit(ret)
