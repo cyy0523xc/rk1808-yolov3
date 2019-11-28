@@ -208,7 +208,7 @@ if __name__ == '__main__':
     rknn = load_model()
     testtime = timer()
     result = rknn.inference(inputs=[image])
-    print("rknn use time {}", timer()-testtime)
+    print("rknn inference time {}", timer()-testtime)
     # tiny模型时，len result == 2
     # spp模型时，len result == 3
     print("result len: ", len(result))
@@ -236,4 +236,5 @@ if __name__ == '__main__':
 
     filename = 'output.jpg' if len(sys.argv) <= 2 else sys.argv[2]
     cv2.imwrite(filename, frame)
+    print("output filename: %s" % filename)
     rknn.release()
